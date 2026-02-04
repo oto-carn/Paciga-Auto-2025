@@ -10,8 +10,6 @@
   --font-body: 'Open Sans', sans-serif;
   --color-bg: #ffffff;
   --color-text: #000000;
-  --hero-bg: #121212;
-  --section-bg: #fafafa;
   --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -23,21 +21,63 @@ body {
   overflow-x: hidden;
 }
 
-/* === JEMNÉ NADPISY === */
+/* === TYPOGRAPHY === */
 h1, h2, h3 {
   font-family: var(--font-heading);
-  font-weight: 500; /* tenké, nie bold */
+  font-weight: 500;
   line-height: 1.25;
   letter-spacing: -0.3px;
 }
 
-h2 { font-size: 2.2rem; margin-bottom: 20px; }
-p { margin-bottom: 16px; }
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+p {
+  margin-bottom: 18px;
+}
 
 .container {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
+}
+
+/* === TOP BAR === */
+.top-bar {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  color: white;
+  z-index: 10;
+}
+
+.top-left,
+.top-right {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-link,
+.phone {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  opacity: 0.9;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.nav-link:hover,
+.phone:hover {
+  opacity: 1;
 }
 
 /* === HERO === */
@@ -49,6 +89,7 @@ p { margin-bottom: 16px; }
   background-position: center;
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -61,53 +102,22 @@ p { margin-bottom: 16px; }
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--hero-bg);
-  opacity: 0.75;
+  background: rgba(0, 0, 0, 0.4);
 }
 
-/* === HORE VĽAVO: čísla + logo */
-.hero-header-left {
+.hero-logo {
   position: absolute;
-  top: 32px;
-  left: 32px;
-  text-align: left;
-  color: white;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
 }
 
-.hero-phones {
-  margin-bottom: 16px;
+.hero-logo img {
+  height: 60px;
+  object-fit: contain;
 }
 
-.hero-phones span {
-  display: block;
-  font-family: var(--font-body);
-  font-size: 1.05rem;
-  font-weight: 500;
-  opacity: 0.95;
-  line-height: 1.5;
-}
-
-.paciga-logo {
-  font-family: var(--font-heading);
-  font-size: 1.9rem;
-  font-weight: 500;
-  color: white;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.paciga-logo::after {
-  content: "";
-  display: inline-block;
-  width: 26px;
-  height: 19px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 36'%3E%3Cpath d='M45 12c0-1.1-.9-2-2-2H2c-1.1 0-2 .9-2 2v24c0 1.1.9 2 2 2h41c1.1 0 2-.9 2-2V12z' fill='%23fff'/%3E%3Cpath d='M36 20c0-1.1-.9-2-2-2h-6c-1.1 0-2 .9-2 2v6c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2v-6z' fill='%23000'/%3E%3Cpath d='M30 22c0-1.1-.9-2-2-2h-2c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2v-2z' fill='%23fff'/%3E%3Cpath d='M24 18c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 10c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z' fill='%23000'/%3E%3C/svg%3E") no-repeat;
-  background-size: contain;
-}
-
-/* === HERO CONTENT === */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -144,17 +154,14 @@ p { margin-bottom: 16px; }
 
 /* === SECTIONS === */
 .section {
-  padding: 80px 0;
-}
-
-.section:nth-child(even) {
-  background: var(--section-bg);
+  padding: 100px 0;
+  background: var(--color-bg);
 }
 
 .content-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 50px;
+  gap: 60px;
   align-items: center;
 }
 
@@ -168,39 +175,24 @@ p { margin-bottom: 16px; }
 
 .content-image img {
   width: 100%;
-  border-radius: 6px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
 
 .content-text h2 {
-  position: relative;
-  display: inline-block;
-}
-
-.content-text h2:after {
-  content: '';
-  display: block;
-  width: 40px;
-  height: 2px;
-  background: var(--color-text);
-  margin-top: 8px;
+  text-align: left;
+  margin-bottom: 20px;
 }
 
 /* === AWARD === */
-.award-section {
-  background: white;
-  text-align: center;
-}
-
 .award-wrapper {
   max-width: 800px;
   margin: 0 auto;
+  text-align: center;
 }
 
-.award-title {
-  font-size: 2.4rem;
-  margin-bottom: 30px;
-  font-weight: 500;
+.award-image {
+  margin: 40px 0;
 }
 
 .award-image img {
@@ -210,57 +202,47 @@ p { margin-bottom: 16px; }
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* === CTA / BUTTONS === */
-.cta .btn,
-.cta .btn-outline {
-  margin: 10px;
+/* === KONTAKT === */
+.contact-section {
+  text-align: center;
 }
 
-.btn, .btn-outline {
-  display: inline-block;
-  padding: 12px 28px;
-  border-radius: 30px;
+.contact-section h2 {
+  margin-bottom: 24px;
+}
+
+.contact-section p {
+  max-width: 700px;
+  margin: 0 auto 30px;
+  font-size: 1.1rem;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.contact-info a {
   font-family: var(--font-body);
+  font-size: 1.2rem;
   font-weight: 600;
+  color: var(--color-text);
   text-decoration: none;
-  transition: var(--transition);
+  transition: opacity 0.3s;
 }
 
-.btn {
-  background: var(--color-text);
-  color: white;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-}
-
-.btn-outline {
-  border: 2px solid var(--color-text);
-  color(--color-text);
-}
-
-.btn-outline:hover {
-  background: var(--color-text);
-  color: white;
+.contact-info a:hover {
+  opacity: 0.8;
 }
 
 /* === FOOTER === */
 footer {
-  padding: 30px 0;
+  padding: 40px 0;
   text-align: center;
   font-size: 0.95rem;
   color: #666;
-}
-
-footer a {
-  color: #666;
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
 }
 
 /* === ANIMATIONS === */
@@ -277,17 +259,15 @@ footer a:hover {
 
 /* === RESPONSIVE === */
 @media (max-width: 900px) {
-  .hero-header-left {
-    top: 20px;
-    left: 20px;
-  }
-  .hero-phones span { display: inline; margin-right: 16px; }
+  .content-row { grid-template-columns: 1fr; gap: 40px; }
   .hero-title { font-size: 2.4rem; }
+  .top-left, .top-right { gap: 16px; }
+  .contact-info { flex-direction: column; gap: 12px; }
 }
 
 @media (max-width: 600px) {
-  .hero { height: 90vh; min-height: 600px; }
+  .hero { height: 90vh; }
   .hero-title { font-size: 2.0rem; }
-  .hero-subtitle { font-size: 1.1rem; }
-  .hero-link { font-size: 1.0rem; }
+  h2 { font-size: 2.0rem; }
+  .hero-logo { top: 60px; }
 }
