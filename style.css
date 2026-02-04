@@ -145,6 +145,7 @@ p {
   max-width: 800px;
   padding: 0 20px;
   margin-top: -30px;
+  text-align: center;
 }
 
 .hero-subtitle {
@@ -162,16 +163,25 @@ p {
   text-shadow: 0 2px 12px rgba(0,0,0,0.4);
 }
 
-.hero-link {
+/* === BADGE: Prejsť na Paciga.sk === */
+.hero-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
   font-family: var(--font-body);
-  font-size: 1.2rem;
-  color: rgba(0,0,0,0.75);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 8px 22px;
+  border-radius: 30px;
   text-decoration: none;
-  transition: opacity 0.3s;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  margin-top: 12px;
 }
 
-.hero-link:hover {
-  opacity: 1;
+.hero-badge:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
 }
 
 /* === SECTIONS === */
@@ -305,4 +315,8 @@ footer {
   .hero-logo { top: 60px; left: 16px; }
   .hero-logo img { height: 70px; }
   .phone { font-size: 1.1rem; }
+  .hero-badge {
+    font-size: 0.85rem;
+    padding: 6px 18px;
+  }
 }
