@@ -168,13 +168,13 @@ p {
 
 .hero-badge {
   display: inline-block;
-  background: #000000; /* čierne pozadie */
-  color: #ffffff; /* biely text */
+  background: #000000;
+  color: #ffffff;
   font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 500;
   padding: 8px 24px;
-  border-radius: 8px; /* zaoblené rohy */
+  border-radius: 8px;
   text-decoration: none;
   transition: all 0.3s ease;
 }
@@ -294,29 +294,35 @@ footer {
   transform: translateY(0);
 }
 
-/* === RESPONSIVE === */
+/* === RESPONSIVE – zachováva rovnaký vzhľad, len optimalizuje veľkosť === */
 @media (max-width: 900px) {
-  .content-row { grid-template-columns: 1fr; gap: 40px; }
   .hero-title { font-size: 2.8rem; }
-  .top-left, .top-right { gap: 20px; }
-  .phone { font-size: 1.2rem; }
+  h2 { font-size: 2.4rem; }
+  .phone { font-size: 1.25rem; }
   .nav-link { font-size: 1.1rem; }
+  .content-row { grid-template-columns: 1fr; gap: 40px; }
   .contact-info { flex-direction: column; gap: 16px; }
   .content-image img,
   .award-image img {
-    min-height: 360px;
+    min-height: 400px;
   }
 }
 
 @media (max-width: 600px) {
-  .hero { height: 90vh; }
-  .hero-title { font-size: 2.3rem; }
-  h2 { font-size: 2.2rem; }
-  .hero-logo { top: 60px; left: 16px; }
-  .hero-logo img { height: 70px; }
-  .phone { font-size: 1.1rem; }
+  .hero { height: 92vh; min-height: 650px; }
+  .hero-title { font-size: 2.4rem; }
+  h2 { font-size: 2.1rem; }
+  .hero-subtitle { font-size: 1.2rem; }
+  .phone { font-size: 1.15rem; }
+  .hero-logo { top: 70px; left: 16px; }
+  .hero-logo img { height: 75px; }
   .hero-badge {
-    font-size: 0.85rem;
-    padding: 6px 18px;
+    font-size: 0.9rem;
+    padding: 7px 20px;
+  }
+  .content-row { gap: 36px; }
+  .content-image img,
+  .award-image img {
+    min-height: 340px;
   }
 }
